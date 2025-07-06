@@ -1,0 +1,137 @@
+/* Usamos variables para que sea fácil cambiar los colores */
+:host {
+  --primary-color: #007bff;
+  --danger-color: #dc3545;
+  --light-gray: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-color: #343a40;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+.page-container {
+  padding: 2rem;
+  background-color: var(--light-gray);
+}
+
+h2 {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Estilo de "Tarjeta" para agrupar el formulario y la tabla */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  margin-bottom: 2rem;
+}
+
+/* Mejoramos el formulario con CSS Grid para alineación perfecta */
+.ingrediente-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 columnas */
+  gap: 1rem;
+  align-items: flex-end; /* Alinea los elementos en la parte inferior */
+}
+
+/* Estilo para los inputs y select */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Contenedor para los botones del formulario */
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+  grid-column: span 4; /* Hacemos que ocupe todo el ancho */
+  justify-content: flex-end; /* Alinea los botones a la derecha */
+}
+
+/* Estilo base para todos los botones */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Tabla con un look más limpio y moderno */
+.ingredientes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ingredientes-table th,
+.ingredientes-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ingredientes-table th {
+  color: #6c757d;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.ingredientes-table tbody tr:hover {
+  background-color: var(--light-gray);
+}
+
+.ingredientes-table td .btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.acciones-cell {
+  display: flex;
+  gap: 0.5rem;
+}

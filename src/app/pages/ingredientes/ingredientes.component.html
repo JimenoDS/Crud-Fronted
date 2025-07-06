@@ -1,1 +1,68 @@
-<p>ingredientes works!</p>
+<div class="page-container">
+  <h2>Gestión de Ingredientes</h2>
+
+  <div class="card">
+    <form class="ingrediente-form" [formGroup]="form" (ngSubmit)="guardar()">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" formControlName="nombre" required />
+      </div>
+      <div>
+        <label for="precio">Precio</label>
+        <input id="precio" type="number" formControlName="precio" required />
+      </div>
+      <div>
+        <label for="unidad">Unidad</label>
+        <input id="unidad" type="text" formControlName="unidad" />
+      </div>
+      <div>
+        <label for="peso">Peso</label>
+        <input id="peso" type="number" formControlName="peso" />
+      </div>
+      <div>
+        <label for="unidadPeso">Unidad Peso</label>
+        <select id="unidadPeso" formControlName="unidadPeso">
+          <option value="g">Gramos</option>
+          <option value="mg">Miligramos</option>
+          <option value="lb">Libras</option>
+          <option value="oz">Onzas</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">
+          {{ idEditando ? 'Actualizar' : 'Agregar' }}
+        </button>
+        <button class="btn btn-secondary" type="button" *ngIf="idEditando" (click)="cancelarEdicion()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <table class="ingredientes-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Unidad</th>
+          <th>Peso (kg)</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ing of ingredientes">
+          <td>{{ ing.nombre }}</td>
+          <td>{{ ing.precio | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>{{ ing.unidad }}</td>
+          <td>{{ convertirAKg(ing.peso, ing.unidadPeso) | number: '1.3-3' }}</td>
+          <td class="acciones-cell">
+            <button class="btn btn-secondary" (click)="editar(ing)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminar(ing.id!)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
